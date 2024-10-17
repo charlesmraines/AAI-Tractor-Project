@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'tractor_gps_node = tractor_gps_driver.gps_driver.py:main'
+            'tractor_gps_node = tractor_gps_driver.gps_driver:main'
         ],
     },
 )

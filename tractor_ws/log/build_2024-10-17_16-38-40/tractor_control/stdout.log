@@ -1,0 +1,41 @@
+running egg_info
+creating ../../build/tractor_control/tractor_control.egg-info
+writing ../../build/tractor_control/tractor_control.egg-info/PKG-INFO
+writing dependency_links to ../../build/tractor_control/tractor_control.egg-info/dependency_links.txt
+writing entry points to ../../build/tractor_control/tractor_control.egg-info/entry_points.txt
+writing requirements to ../../build/tractor_control/tractor_control.egg-info/requires.txt
+writing top-level names to ../../build/tractor_control/tractor_control.egg-info/top_level.txt
+writing manifest file '../../build/tractor_control/tractor_control.egg-info/SOURCES.txt'
+reading manifest file '../../build/tractor_control/tractor_control.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../../build/tractor_control/tractor_control.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/aai/AAI-Tractor-Project/tractor_ws/build/tractor_control/build
+creating /home/aai/AAI-Tractor-Project/tractor_ws/build/tractor_control/build/lib
+creating /home/aai/AAI-Tractor-Project/tractor_ws/build/tractor_control/build/lib/tractor_control
+copying tractor_control/final_teleop.py -> /home/aai/AAI-Tractor-Project/tractor_ws/build/tractor_control/build/lib/tractor_control
+copying tractor_control/final_controller.py -> /home/aai/AAI-Tractor-Project/tractor_ws/build/tractor_control/build/lib/tractor_control
+copying tractor_control/__init__.py -> /home/aai/AAI-Tractor-Project/tractor_ws/build/tractor_control/build/lib/tractor_control
+running install
+running install_lib
+creating /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_control/lib/python3.10/site-packages/tractor_control
+copying /home/aai/AAI-Tractor-Project/tractor_ws/build/tractor_control/build/lib/tractor_control/final_teleop.py -> /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_control/lib/python3.10/site-packages/tractor_control
+copying /home/aai/AAI-Tractor-Project/tractor_ws/build/tractor_control/build/lib/tractor_control/final_controller.py -> /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_control/lib/python3.10/site-packages/tractor_control
+copying /home/aai/AAI-Tractor-Project/tractor_ws/build/tractor_control/build/lib/tractor_control/__init__.py -> /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_control/lib/python3.10/site-packages/tractor_control
+byte-compiling /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_control/lib/python3.10/site-packages/tractor_control/final_teleop.py to final_teleop.cpython-310.pyc
+byte-compiling /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_control/lib/python3.10/site-packages/tractor_control/final_controller.py to final_controller.cpython-310.pyc
+byte-compiling /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_control/lib/python3.10/site-packages/tractor_control/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_control/share/ament_index
+creating /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_control/share/ament_index/resource_index
+creating /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_control/share/ament_index/resource_index/packages
+copying resource/tractor_control -> /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_control/share/ament_index/resource_index/packages
+copying package.xml -> /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_control/share/tractor_control
+running install_egg_info
+Copying ../../build/tractor_control/tractor_control.egg-info to /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_control/lib/python3.10/site-packages/tractor_control-0.0.0-py3.10.egg-info
+running install_scripts
+Installing my_node script to /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_control/lib/tractor_control
+Installing tractor_motor_controller_node script to /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_control/lib/tractor_control
+Installing tractor_teleop_node script to /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_control/lib/tractor_control
+writing list of installed files to '/home/aai/AAI-Tractor-Project/tractor_ws/build/tractor_control/install.log'

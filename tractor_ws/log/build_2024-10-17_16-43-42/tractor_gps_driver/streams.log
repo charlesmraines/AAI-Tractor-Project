@@ -1,0 +1,22 @@
+[1.868s] Invoking command in '/home/aai/AAI-Tractor-Project/tractor_ws/src/tractor_gps_driver': PYTHONPATH=/home/aai/AAI-Tractor-Project/tractor_ws/build/tractor_gps_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_gps_driver/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/tractor_gps_driver build --build-base /home/aai/AAI-Tractor-Project/tractor_ws/build/tractor_gps_driver/build install --record /home/aai/AAI-Tractor-Project/tractor_ws/build/tractor_gps_driver/install.log --single-version-externally-managed install_data
+[2.351s] running egg_info
+[2.352s] writing ../../build/tractor_gps_driver/tractor_gps_driver.egg-info/PKG-INFO
+[2.353s] writing dependency_links to ../../build/tractor_gps_driver/tractor_gps_driver.egg-info/dependency_links.txt
+[2.353s] writing entry points to ../../build/tractor_gps_driver/tractor_gps_driver.egg-info/entry_points.txt
+[2.354s] writing requirements to ../../build/tractor_gps_driver/tractor_gps_driver.egg-info/requires.txt
+[2.354s] writing top-level names to ../../build/tractor_gps_driver/tractor_gps_driver.egg-info/top_level.txt
+[2.358s] reading manifest file '../../build/tractor_gps_driver/tractor_gps_driver.egg-info/SOURCES.txt'
+[2.358s] adding license file 'LICENSE'
+[2.359s] writing manifest file '../../build/tractor_gps_driver/tractor_gps_driver.egg-info/SOURCES.txt'
+[2.360s] running build
+[2.360s] running build_py
+[2.360s] running install
+[2.361s] running install_lib
+[2.364s] running install_data
+[2.364s] running install_egg_info
+[2.368s] removing '/home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_gps_driver/lib/python3.10/site-packages/tractor_gps_driver-0.0.0-py3.10.egg-info' (and everything under it)
+[2.369s] Copying ../../build/tractor_gps_driver/tractor_gps_driver.egg-info to /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_gps_driver/lib/python3.10/site-packages/tractor_gps_driver-0.0.0-py3.10.egg-info
+[2.371s] running install_scripts
+[2.414s] Installing tractor_gps_node script to /home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_gps_driver/lib/tractor_gps_driver
+[2.415s] writing list of installed files to '/home/aai/AAI-Tractor-Project/tractor_ws/build/tractor_gps_driver/install.log'
+[2.486s] Invoked command in '/home/aai/AAI-Tractor-Project/tractor_ws/src/tractor_gps_driver' returned '0': PYTHONPATH=/home/aai/AAI-Tractor-Project/tractor_ws/build/tractor_gps_driver/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/aai/AAI-Tractor-Project/tractor_ws/install/tractor_gps_driver/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/tractor_gps_driver build --build-base /home/aai/AAI-Tractor-Project/tractor_ws/build/tractor_gps_driver/build install --record /home/aai/AAI-Tractor-Project/tractor_ws/build/tractor_gps_driver/install.log --single-version-externally-managed install_data
