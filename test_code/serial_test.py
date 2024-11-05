@@ -1,6 +1,7 @@
 import serial
 import keyboard  # Requires installation: pip install keyboard
 import sys, termios, tty, select
+import time
 
 # Set up the serial connection (adjust 'COM3' to your Arduino's port)
 serial_port = '/dev/ttyACM0'  # Change this to your Arduino's port
@@ -25,10 +26,14 @@ try:
         # Wait for a key press
         # event = keyboard.read_event()
         key = getKey()
+        if key == 'q':
+            break
         
         # Check if the event is a key press and if it's 'g' or 'b'
         # ser.write(event.name.encode())  # Send the command as a byte
-        print(f"Data '{key}' sent to Arduino.")
+        print(f"\rData: '{key}' sent to Arduino.")
+        sys.stdout.flush()
+        time.sleep(0.05)
         
 except KeyboardInterrupt:
     print("Program exited.")
