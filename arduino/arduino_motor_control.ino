@@ -26,25 +26,54 @@ void setup() {
     Serial.begin(9600); // Begin serial communication at 9600 baud rate
 }
 
+// void loop() {
+//     Serial.println(currentSteps); // Print the current steering steps for debugging
+
+//     // Check if serial data is available (expecting two floats for linear and angular velocity)
+//     if (Serial.available() >= 8) {
+//         float linearVel = 0;    // Variable to store linear velocity for acceleration control
+//         float angularVel = 0;   // Variable to store angular velocity for steering control
+
+//         // Read linear and angular velocities as floats from serial input
+//         Serial.readBytes((char*)&linearVel, sizeof(linearVel));
+//         Serial.readBytes((char*)&angularVel, sizeof(angularVel));
+
+//         // Control linear actuator for acceleration based on linear velocity
+//         controlAcceleration(linearVel);
+
+//         // Control steering using stepper motor based on angular velocity
+//         controlSteering(angularVel);
+//     } else {
+//         // If no command received, stop both the linear actuator and stepper motor
+//         stopMotors();
+//     }
+// }
+
+// accept string inputs
 void loop() {
-    Serial.println(currentSteps); // Print the current steering steps for debugging
+    // Check if there is serial data available
+    if (Serial.available()) {
+        // Read the entire line as a string (format: "linearVel angularVel")
+        String input = Serial.readStringUntil('\n');
+        
+        // Find the space in the input and split the string into two parts
+        int spaceIndex = input.indexOf(' ');
+        
+        if (spaceIndex != -1) {
+            // Extract and convert the linear velocity
+            float linearVel = input.substring(0, spaceIndex).toFloat();
+            
+            // Extract and convert the angular velocity
+            float angularVel = input.substring(spaceIndex + 1).toFloat();
+            
+            // Control acceleration with the parsed linear velocity
+            controlAcceleration(linearVel);
 
-    // Check if serial data is available (expecting two floats for linear and angular velocity)
-    if (Serial.available() >= 8) {
-        float linearVel = 0;    // Variable to store linear velocity for acceleration control
-        float angularVel = 0;   // Variable to store angular velocity for steering control
-
-        // Read linear and angular velocities as floats from serial input
-        Serial.readBytes((char*)&linearVel, sizeof(linearVel));
-        Serial.readBytes((char*)&angularVel, sizeof(angularVel));
-
-        // Control linear actuator for acceleration based on linear velocity
-        controlAcceleration(linearVel);
-
-        // Control steering using stepper motor based on angular velocity
-        controlSteering(angularVel);
+            // Control steering with the parsed angular velocity
+            controlSteering(angularVel);
+        }
     } else {
-        // If no command received, stop both the linear actuator and stepper motor
+        // If no command, stop both motors
         stopMotors();
     }
 }
