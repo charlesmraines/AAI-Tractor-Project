@@ -1,3 +1,0 @@
-[console_scripts]
-tractor_gps_node = tractor_gps_driver.gps_driver:main
-

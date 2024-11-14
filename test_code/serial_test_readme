@@ -1,5 +1,0 @@
-Before running 'sudo python3 serial_test.py', you must run the following:
-
-sudo pip install pyserial
-sudo pip install keyboard
-sudo chmod a+rw /dev/ttyACM0 (Must be run every time terminal is opened)
