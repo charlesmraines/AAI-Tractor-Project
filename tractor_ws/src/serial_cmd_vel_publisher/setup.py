@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'serial_cmd_vel_pub_node = serial_cmd_vel_publisher.serial_cmd_vel_publisher:main'
         ],
     },
 )
