@@ -22,7 +22,8 @@ setup(
         'console_scripts': [
             'my_node = my_py_pkg.my_node:main',
             'tractor_teleop_node = tractor_control.final_teleop:main',
-            'tractor_motor_controller_node = tractor_control.final_controller:main'
+            'tractor_motor_controller_node = tractor_control.final_controller:main',
+            'simple_gps_controller_node = tractor_control.simple_gps_controller:main'
         ],
     },
 )
