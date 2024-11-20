@@ -2,8 +2,10 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import NavSatFix
 from geometry_msgs.msg import Twist
+from std_msgs.msg import Float32
 import math
 import numpy as np
+
 
 def lla_to_ecef(lat, lon, alt):
     # WGS84 constants
@@ -21,18 +23,22 @@ def lla_to_ecef(lat, lon, alt):
 
     return np.array([x, y, z])
 
+
 class SimpleController(Node):
     def __init__(self):
         super().__init__('simple_controller')
 
-        # Subscriber for GPS
+        # Subscribers
         self.gps_sub = self.create_subscription(NavSatFix, '/gps/fix', self.gps_callback, 10)
-        self.twist = Twist()
+        self.camera_sub = self.create_subscription(Float32, 'camera/distance', self.camera_callback, 10)
 
         # Publisher for velocity command (Twist)
         self.vel_pub = self.create_publisher(Twist, '/cmd_vel', 10)
 
-        # Inition Position
+        # Twist message
+        self.twist = Twist()
+
+        # Initial positions
         self.initial_ecef = None
         self.initial_lla = None
 
@@ -41,26 +47,48 @@ class SimpleController(Node):
 
         self.current_pos = None
 
+        # Obstacle detection flag
+        self.obstacle_detected = False
+
     def gps_callback(self, msg):
-        if self.initial_enu == None:
+        # Initialize reference positions
+        if self.initial_lla is None:
             self.initial_lla = [msg.latitude, msg.longitude, 0]
             self.initial_ecef = lla_to_ecef(self.initial_lla[0], self.initial_lla[1], 0)
-        if self.current_pos == None:
+
+        # Calculate current position in ENU
+        if self.current_pos is None:
             self.current_pos = self.ecef_to_enu(self.initial_ecef, self.initial_ecef)
         else:
-            self.current_pos = self.ecef_to_enu(lla_to_ecef(msg.latitude, msg.longitude), self.initial_ecef)
+            self.current_pos = self.ecef_to_enu(lla_to_ecef(msg.latitude, msg.longitude, 0), self.initial_ecef)
+
         self.control_loop()
-    
+
+    def camera_callback(self, msg):
+        # Check if the obstacle is within 5 meters
+        if msg.data <= 5.0:
+            self.obstacle_detected = True
+            self.get_logger().info(f"Obstacle detected at {msg.data:.2f} meters! Stopping tractor.")
+        else:
+            self.obstacle_detected = False
+
     def control_loop(self):
-        if self.current_pose:
+        # Stop if an obstacle is detected
+        if self.obstacle_detected:
+            self.twist.linear.x = 0.0
+            self.vel_pub.publish(self.twist)
+            return
+
+        # If current position is available, calculate distance to goal
+        if self.current_pos is not None:
             x = self.current_pos[0]
             y = self.current_pos[1]
 
             # Calculate distance to goal
-            distance = math.sqrt((self.goal_x - x)**2 + (self.goal_y - y)**2)
+            distance = math.sqrt((self.goal[0] - x) ** 2 + (self.goal[1] - y) ** 2)
 
-            if distance > 1:
-                # Proportional control for linear and angular velocity
+            if distance > 1.0:
+                # Proportional control for linear velocity
                 linear_vel = 0.5 * distance  # Adjust this factor to tune the speed
 
                 # Create and publish the Twist message
@@ -92,6 +120,7 @@ class SimpleController(Node):
 
         return np.array([e, n, u])
 
+
 def main(args=None):
     rclpy.init(args=args)
     controller = SimpleController()
@@ -99,6 +128,7 @@ def main(args=None):
     rclpy.spin(controller)
     controller.destroy_node()
     rclpy.shutdown()
+
 
 if __name__ == '__main__':
     main()
