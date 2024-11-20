@@ -70,6 +70,7 @@ class SimpleController(Node):
                 # If within threshold, stop
                 self.twist.linear.x = 0.0
                 self.vel_pub.publish(self.twist)
+        print(f"Current Pos: {self.current_pos[0]}, {self.current_pos[1]} | Goal Pos: {self.goal[0]}, {self.goal[1]} | Twist Linear: {self.twist.linear.x}\n")
 
     def ecef_to_enu(self, ecef, ref_ecef):
         # ENU transformation
