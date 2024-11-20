@@ -41,8 +41,9 @@ class DepthAIPublisherNode(Node):
 
         # Output streams
         color_cam = self.pipeline.create(dai.node.ColorCamera)
-        color_cam.setResolution(dai.ColorCameraProperties.SensorResolution.THE_1080_P)
-        color_cam.setFps(30)
+        # color_cam.setResolution(dai.ColorCameraProperties.SensorResolution.THE_1080_P)
+        color_cam.setResolution(dai.ColorCameraProperties.SensorResolution.THE_400_P) # Set RGB camera resolution to 400p
+        color_cam.setFps(30) # Optionally set a lower FPS if desired
 
         xout_rgb = self.pipeline.create(dai.node.XLinkOut)
         xout_rgb.setStreamName("rgb")
@@ -60,6 +61,23 @@ class DepthAIPublisherNode(Node):
         # Timer to periodically publish frames
         self.timer = self.create_timer(0.1, self.publish_frames)
 
+    # Calculate mean of a 3x3 region around the center without NumPy
+    def calculate_mean_3x3(self, depth_frame, center_x, center_y):
+        total_sum = 0
+        count = 0
+
+        # Iterate over the 3x3 region
+        for i in range(center_y - 1, center_y + 2):  # Rows from center_y-1 to center_y+1
+            for j in range(center_x - 1, center_x + 2):  # Columns from center_x-1 to center_x+1
+                # Check bounds to ensure we don't access invalid indices
+                if 0 <= i < len(depth_frame) and 0 <= j < len(depth_frame[0]):
+                    total_sum += depth_frame[i][j]
+                    count += 1
+
+        # Calculate mean
+        mean_value = total_sum / count if count > 0 else 0
+        return mean_value
+
     def publish_frames(self):
         # Get RGB frame
         in_rgb = self.rgb_queue.get()
@@ -72,7 +90,10 @@ class DepthAIPublisherNode(Node):
         # Calculate distance at center
         height, width = depth_frame.shape
         center_x, center_y = width // 2, height // 2
-        distance_mm = depth_frame[center_y, center_x]
+        # distance_mm = depth_frame[center_y, center_x] # Get the depth value at center coordinates
+        # Calculate average depth in a 3x3 region around the center
+        # region = depth_frame[center_y-1:center_y+2, center_x-1:center_x+2]
+        distance_mm = self.calculate_mean_3x3(depth_frame, center_x, center_y)
         distance_m = distance_mm / 1000.0  # Convert to meters
 
         # Publish distance
