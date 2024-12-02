@@ -1,6 +1,7 @@
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import NavSatFix
+from std_msgs.msg import String
 from geometry_msgs.msg import Twist
 import math
 import numpy as np
@@ -27,6 +28,7 @@ class SimpleController(Node):
 
         # Subscriber for GPS
         self.gps_sub = self.create_subscription(NavSatFix, '/gps/fix', self.gps_callback, 10)
+        self.imu_pub = self.create_subscription(String, 'imu/heading', self.gps_callback, 10)
         self.twist = Twist()
 
         # Publisher for velocity command (Twist)
@@ -37,10 +39,11 @@ class SimpleController(Node):
         self.initial_lla = None
         self.initial_enu = None
 
-        # Target Distance
-        self.goal = 10
+        # Target Goal
+        self.goal = [5, 5]
 
         self.current_pos = None
+        self.current_heading = 0.0
 
     def gps_callback(self, msg):
         if self.initial_enu is None:
@@ -53,31 +56,41 @@ class SimpleController(Node):
             self.current_pos = self.ecef_to_enu(lla_to_ecef(msg.latitude, msg.longitude, 0), self.initial_ecef)
         self.control_loop()
 
+    def imu_callback(self, msg):
+        try:
+            self.current_heading = float(msg.data)
+            self.get_logger().info(f"IMU heading: {self.current_heading} degrees")
+        except ValueError:
+            self.get_logger().error(f"Invalid IMU heading received: {msg.data}")
+
     def control_loop(self):
         if self.current_pos is not None:
             x = self.current_pos[0]
             y = self.current_pos[1]
 
             # Calculate distance to goal
-            distance_traveled = math.sqrt((x - self.initial_enu[0])**2 + (y - self.initial_enu[1])**2)
-            distance_to_goal = self.goal - distance_traveled
+            delta_pos = math.sqrt((self.goal[0] - x)**2 + (self.goal[1] - y)**2)
+            desired_theta = math.degrees(math.atan2(self.goal[1] - y, self.goal[0] - x))
+            heading_error = desired_theta - self.current_heading
+            heading_error = (heading_error + 180) % 360 - 180  # Normalize to [-180, 180]
 
-            if distance_to_goal > 1:
+            if delta_pos > 1:
                 # Proportional control for linear and angular velocity
-                linear_vel = 0.5 * distance_to_goal  # Adjust this factor to tune the speed
-                if linear_vel > 5.0:
-                    linear_vel = 4.9
-                if linear_vel < -5.0:
-                    linear_vel = -4.9
+                linear_vel = 0.5 * delta_pos  # Adjust this factor to tune the speed
+                angular_vel = 0.05 * heading_error  # Adjust this factor to tune the turning rate
 
+                # Clamp values
+                linear_vel = max(min(linear_vel, 5.0), -5.0)
+                angular_vel = max(min(angular_vel, 2.0), -2.0)
                 # Create and publish the Twist message
                 self.twist.linear.x = linear_vel
+                self.twist.angular.z = angular_vel
                 self.vel_pub.publish(self.twist)
             else:
                 # If within threshold, stop
                 self.twist.linear.x = 0.0
+                self.twist.angular.z = 0.0
                 self.vel_pub.publish(self.twist)
-            print(f"distance to goal: {distance_to_goal}\n")
 
     def ecef_to_enu(self, ecef, ref_ecef):
         # ENU transformation
