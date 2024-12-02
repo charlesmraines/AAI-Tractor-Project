@@ -35,33 +35,40 @@ class SimpleController(Node):
         # Inition Position
         self.initial_ecef = None
         self.initial_lla = None
+        self.initial_enu = None
 
-        # Target (goal) position
-        self.goal = [10, 0]
+        # Target Distance
+        self.goal = 10
 
         self.current_pos = None
 
     def gps_callback(self, msg):
-        if self.initial_enu == None:
+        if self.initial_enu is None:
             self.initial_lla = [msg.latitude, msg.longitude, 0]
             self.initial_ecef = lla_to_ecef(self.initial_lla[0], self.initial_lla[1], 0)
-        if self.current_pos == None:
+            self.initial_enu = self.ecef_to_enu(self.initial_ecef, self.initial_ecef)
+        if self.current_pos is None:
             self.current_pos = self.ecef_to_enu(self.initial_ecef, self.initial_ecef)
         else:
-            self.current_pos = self.ecef_to_enu(lla_to_ecef(msg.latitude, msg.longitude), self.initial_ecef)
+            self.current_pos = self.ecef_to_enu(lla_to_ecef(msg.latitude, msg.longitude, 0), self.initial_ecef)
         self.control_loop()
 
     def control_loop(self):
-        if self.current_pose:
+        if self.current_pos is not None:
             x = self.current_pos[0]
             y = self.current_pos[1]
 
             # Calculate distance to goal
-            distance = math.sqrt((self.goal_x - x)**2 + (self.goal_y - y)**2)
+            distance_traveled = math.sqrt((x - self.initial_enu[0])**2 + (y - self.initial_enu[1])**2)
+            distance_to_goal = self.goal - distance_traveled
 
-            if distance > 1:
+            if distance_to_goal > 1:
                 # Proportional control for linear and angular velocity
-                linear_vel = 0.5 * distance  # Adjust this factor to tune the speed
+                linear_vel = 0.5 * distance_to_goal  # Adjust this factor to tune the speed
+                if linear_vel > 5.0:
+                    linear_vel = 4.9
+                if linear_vel < -5.0:
+                    linear_vel = -4.9
 
                 # Create and publish the Twist message
                 self.twist.linear.x = linear_vel
@@ -70,7 +77,7 @@ class SimpleController(Node):
                 # If within threshold, stop
                 self.twist.linear.x = 0.0
                 self.vel_pub.publish(self.twist)
-        print(f"Current Pos: {self.current_pos[0]}, {self.current_pos[1]} | Goal Pos: {self.goal[0]}, {self.goal[1]} | Twist Linear: {self.twist.linear.x}\n")
+            print(f"distance to goal: {distance_to_goal}\n")
 
     def ecef_to_enu(self, ecef, ref_ecef):
         # ENU transformation
