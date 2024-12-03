@@ -36,6 +36,7 @@ int average = 0;            // the average
 
 void setup() {
     // Set stepper motor pins for steering as outputs
+    sensors_event_t orientationData;
     pinMode(directionPin, OUTPUT);
     pinMode(stepPin, OUTPUT);
     pinMode(A1, INPUT);
@@ -76,40 +77,40 @@ void setup() {
 void loop() {
 
   // void loop IMU code starts
-  sensors_event_t orientationData;
   bno.getEvent(&orientationData, Adafruit_BNO055::VECTOR_EULER);
   printEvent(&orientationData); // A function for printing the data od the IMU which has been declared in later part
   delay(BNO055_SAMPLERATE_DELAY_MS);
-// void loop IMU code ends 
+  // void loop IMU code ends 
 
-    // Check if there is serial data available
-    delay(10);
-    if (Serial.available()) {
-        // Read the entire line as a string (format: "linearVel angularVel")
-        String input = Serial.readStringUntil('\n');
-        
-        // Find the space in the input and split the string into two parts
-        float linearVel;
-        float angularVel;
-        int spaceIndex = input.indexOf(' ');
-        int feedback = smooth_feedback();
-        Serial.println(String(feedback));
-        
-        if (spaceIndex != -1) {
-            // Extract and convert the linear velocity
-            linearVel = input.substring(0, spaceIndex).toFloat();
-            
-            // Extract and convert the angular velocity
-            angularVel = input.substring(spaceIndex + 1).toFloat();
+  // Check if there is serial data available
+  delay(10);
+  if (Serial.available()) {
+      // Read the entire line as a string (format: "linearVel angularVel")
+      String input = Serial.readStringUntil('\n');
+      
+      // Find the space in the input and split the string into two parts
+      float linearVel;
+      float angularVel;
+      int spaceIndex = input.indexOf(' ');
+      int feedback = smooth_feedback();
+      Serial.println(String(feedback));
+      
+      if (spaceIndex != -1) {
+          // Extract and convert the linear velocity
+          linearVel = input.substring(0, spaceIndex).toFloat();
+          
+          // Extract and convert the angular velocity
+          angularVel = input.substring(spaceIndex + 1).toFloat();
 
-            //Serial.println("Linear Vel: " + String(linearVel) + ", Angular Vel: " + String(angularVel) + "\n");
-            controlAcceleration(linearVel, feedback);
-        }
-    } else {
-        // If no command, stop both motors
-        digitalWrite(L_EN, LOW);
-        digitalWrite(R_EN, LOW);
-    }
+          //Serial.println("Linear Vel: " + String(linearVel) + ", Angular Vel: " + String(angularVel) + "\n");
+          controlAcceleration(linearVel, feedback);
+          controlSteering(angularVel);
+      }
+  } else {
+      // If no command, stop both motors
+      digitalWrite(L_EN, LOW);
+      digitalWrite(R_EN, LOW);
+  }
 }
 
 // Function for printing IMU data starts
@@ -123,8 +124,6 @@ void printEvent(sensors_event_t* event) {
   }
 
   Serial.println(x);
-
-  delay(1000);
 }
 // Function for printing IMU data ends.
 
@@ -152,7 +151,7 @@ int smooth_feedback()
 }
 
 // Added debug macros to print information
-#define DEBUG
+//#define DEBUG
 
 // Updated controlAcceleration function with verbose output
 void controlAcceleration(float linearVel, int feedback) {
@@ -198,5 +197,32 @@ void controlAcceleration(float linearVel, int feedback) {
         #endif
         digitalWrite(L_EN, LOW);
         digitalWrite(R_EN, LOW);
+    }
+}
+
+// Function to control the steering based on angular velocity
+void controlSteering(float angularVel) {
+    // Calculate the number of steps based on the angular velocity
+    int steps = map(angularVel, -2.0, 2.0, -maxSteps, maxSteps);
+
+    // Control the direction of the stepper motor based on the sign of the angular velocity
+    if (steps > 0) {
+        // Turning right (positive angular velocity)
+        digitalWrite(directionPin, HIGH);  // Set direction to right
+    } else if (steps < 0) {
+        // Turning left (negative angular velocity)
+        digitalWrite(directionPin, LOW);   // Set direction to left
+    }
+
+    // Step the motor based on the calculated number of steps
+    currentSteps += steps;
+    currentSteps = constrain(currentSteps, -maxSteps, maxSteps);  // Ensure within bounds
+
+    // Make the motor step the calculated number of times
+    for (int i = 0; i < abs(steps); i++) {
+        digitalWrite(stepPin, HIGH);
+        delayMicroseconds(100);  // Adjust step timing as needed
+        digitalWrite(stepPin, LOW);
+        delayMicroseconds(100);  // Adjust step timing as needed
     }
 }
