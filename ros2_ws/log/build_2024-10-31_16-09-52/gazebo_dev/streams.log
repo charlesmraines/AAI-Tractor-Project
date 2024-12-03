@@ -1,0 +1,33 @@
+[0.043s] Invoking command in '/home/andresarias23gmailcom/ros2_ws/build/gazebo_dev': /usr/bin/cmake /home/andresarias23gmailcom/ros2_ws/src/gazebo_ros_pkgs/gazebo_dev -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/andresarias23gmailcom/ros2_ws/install/gazebo_dev
+[0.634s] -- The C compiler identification is GNU 11.4.0
+[0.876s] -- The CXX compiler identification is GNU 11.4.0
+[0.897s] -- Detecting C compiler ABI info
+[1.148s] -- Detecting C compiler ABI info - done
+[1.164s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.165s] -- Detecting C compile features
+[1.166s] -- Detecting C compile features - done
+[1.173s] -- Detecting CXX compiler ABI info
+[1.462s] -- Detecting CXX compiler ABI info - done
+[1.482s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.482s] -- Detecting CXX compile features
+[1.485s] -- Detecting CXX compile features - done
+[1.511s] [31mCMake Error at CMakeLists.txt:4 (find_package):
+[1.511s]   By not providing "Findcatkin.cmake" in CMAKE_MODULE_PATH this project has
+[1.511s]   asked CMake to find a package configuration file provided by "catkin", but
+[1.511s]   CMake did not find one.
+[1.511s] 
+[1.511s]   Could not find a package configuration file provided by "catkin" with any
+[1.512s]   of the following names:
+[1.512s] 
+[1.512s]     catkinConfig.cmake
+[1.512s]     catkin-config.cmake
+[1.512s] 
+[1.513s]   Add the installation prefix of "catkin" to CMAKE_PREFIX_PATH or set
+[1.513s]   "catkin_DIR" to a directory containing one of the above files.  If "catkin"
+[1.516s]   provides a separate development package or SDK, be sure it has been
+[1.516s]   installed.
+[1.516s] 
+[1.516s] [0m
+[1.516s] -- Configuring incomplete, errors occurred!
+[1.517s] See also "/home/andresarias23gmailcom/ros2_ws/build/gazebo_dev/CMakeFiles/CMakeOutput.log".
+[1.521s] Invoked command in '/home/andresarias23gmailcom/ros2_ws/build/gazebo_dev' returned '1': /usr/bin/cmake /home/andresarias23gmailcom/ros2_ws/src/gazebo_ros_pkgs/gazebo_dev -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/andresarias23gmailcom/ros2_ws/install/gazebo_dev

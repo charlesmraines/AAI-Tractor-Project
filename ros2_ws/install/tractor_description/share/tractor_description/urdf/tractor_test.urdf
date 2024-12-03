@@ -1,0 +1,484 @@
+<?xml version="1.0"?>
+<robot name="small_tractor">
+    <!-- Base Link -->
+    <link name="base_link">
+        <visual>
+            <origin xyz="0 0 0.9875" rpy="0 0 0"/>
+            <geometry>
+                <box size="2.92 0.9017 0.6977"/>
+            </geometry>
+            <material name="green">
+                <color rgba="0.0 1.0 0.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.9875" rpy="0 0 0"/>
+            <geometry>
+                <box size="2.92 0.9017 0.6977"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0.9875" rpy="0 0 0"/>
+            <mass value="672"/>
+            <inertia
+                ixx="1705.7" ixy="0.0" ixz="0.0"
+                iyy="9311.5" iyz="0.0"
+                izz="9547.1"/>
+        </inertial>
+    </link>
+
+    <!-- Bar Link -->
+    <link name="bar">
+        <visual>
+        	<origin xyz="0 0 0.9448" rpy="0 0 0"/>
+            <geometry>
+                <box size="1.1176 0.0508 0.0254"/>
+            </geometry>
+            <material name="gray">
+                <color rgba="0.5 0.5 0.5 1.0"/>
+            </material>
+        </visual>
+        <collision>
+        	<origin xyz="0 0 0.9448" rpy="0 0 0"/>
+            <geometry>
+                <box size="1.1176 0.0508 0.0254"/>
+            </geometry>
+        </collision>
+        <inertial>
+        	<origin xyz="0 0 0.9448" rpy="0 0 0"/>
+            <mass value="10"/>
+            <inertia
+                ixx = "0.002" ixy = "0.0" ixz = "0.0"
+                iyy = "0.04" iyz = "0.0"
+                izz = "0.04"/>
+        </inertial>
+    </link>
+
+    <!-- Joint between frame and bar (Changed parent link and position) -->
+    <joint name="frame_to_bar" type="fixed">
+        <parent link="frame"/>
+        <child link="bar"/>
+        <!-- Adjusted origin to place the bar 2cm on top of the frame -->
+        <origin xyz="0 0 0.5677" rpy="0 0 0"/>  
+        <preserveFixedJoint>true</preserveFixedJoint> 
+    </joint>
+    <!-- Bottom Bar Link -->
+    <link name="bottom_bar">
+        <visual>
+            <geometry>
+                <box size="0.381 0.05172 0.02685"/>
+            </geometry>
+            <material name="gray">
+                <color rgba="1.0 1.0 1.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.381 0.05172 0.02685"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="5"/>
+            <inertia>
+                <ixx>0.001</ixx>
+                <iyy>0.02</iyy>
+                <izz>0.02</izz>
+                <ixy>0.0</ixy>
+                <ixz>0.0</ixz>
+                <iyz>0.0</iyz>
+            </inertia>
+        </inertial>
+    </link>
+
+    <!-- Joint between frame and bottom bar (Changed parent link and position) -->
+    <joint name="frame_to_bottom_bar" type="fixed">
+        <parent link="frame"/>
+        <child link="bottom_bar"/>
+        <origin xyz="0 0 0.5" rpy="0 0 0"/>
+        <preserveFixedJoint>true</preserveFixedJoint> 
+    </joint>
+    
+<link name="sensor_holder">
+    <!-- Visual Element for Box -->
+    <visual>
+        <geometry>
+            <box size="0.1100836 0.1100836 0.015"/>
+        </geometry>
+        <material name="gray">
+            <color rgba="1.0 1.0 1.0 1.0"/>  <!-- White color -->
+        </material>
+        <origin xyz="0 0 0.0075" rpy="0 0 0"/>
+    </visual>
+    
+    <!-- Visual Element for Cylinder on Top of Box -->
+    <visual>
+        <geometry>
+            <cylinder radius="0.0411" length="0.006"/>
+        </geometry>
+        <material name="gray">
+            <color rgba="0.5 0.5 0.5 1.0"/>  <!-- Gray color -->
+        </material>
+        <origin xyz="0 0 -0.0105" rpy="0 0 0"/>  <!-- Positioned on top of the box -->
+    </visual>
+
+    <!-- Collision Element (Combined Simplified Box Geometry) -->
+    <collision>
+        <geometry>
+            <box size="0.1100836 0.1100836 0.015"/>
+        </geometry>
+    </collision>
+
+    <!-- Inertial Element -->
+    <inertial>
+        <mass value="2"/>
+        <inertia>
+            <ixx>0.0021</ixx>
+            <iyy>0.0021</iyy>
+            <izz>0.0041</izz>
+            <ixy>0.0</ixy>
+            <ixz>0.0</ixz>
+            <iyz>0.0</iyz>
+        </inertia>
+    </inertial>
+</link>
+
+    <!-- Joint between bottom_bar and sensor holder (Changed parent link and position) -->
+    <joint name="bottom_bar_to_sensor_holder" type="fixed">
+        <parent link="bottom_bar"/>
+        <child link="sensor_holder"/>
+        <origin xyz="0 0 -0.02943" rpy="0 0 0"/>
+        <preserveFixedJoint>true</preserveFixedJoint> 
+    </joint>
+
+    <!-- Front Left Wheel -->
+    <link name="front_left_wheel">
+        <visual>
+            <origin xyz="-0.975 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.3175" length="0.2159"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0.0 0.0 0.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-0.975 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.3175" length="0.2159"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-0.975 0 0" rpy="0 0 0"/>
+            <mass value="112"/>
+            <inertia
+                ixx ="1.4" ixy="0.0" ixz="0.0" 
+                iyy="1.4" iyz="0.0"
+                izz="0.75"/>
+        </inertial>
+    </link>
+
+    <!-- Front Right Wheel -->
+    <link name="front_right_wheel">
+        <visual>
+            <origin xyz="-0.975 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.3175" length="0.2159"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0.0 0.0 0.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-0.975 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.3175" length="0.2159"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-0.975 0 0" rpy="0 0 0"/>
+            <mass value="112"/>
+            <inertia
+                ixx="1.4" ixy="0.0" ixz="0.0"
+                iyy="1.4" iyz="0.0"
+                izz="0.75"/>
+        </inertial>
+    </link>
+
+    <!-- Rear Left Wheel -->
+    <link name="rear_left_wheel">
+        <visual>
+            <origin xyz="-0.975 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.4875" length="0.4953"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0.0 0.0 0.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-0.975 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.4875" length="0.4953"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-0.975 0 0" rpy="0 0 0"/>
+            <mass value="112"/>
+            <inertia
+                ixx="1.4" ixy="0.0" ixz="0.0"
+                iyy="1.4" iyz="0.0"
+                izz="0.75"/>
+        </inertial>
+    </link>
+
+    <!-- Rear Right Wheel -->
+    <link name="rear_right_wheel">
+        <visual>
+            <origin xyz="-0.975 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.4875" length="0.4953"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0.0 0.0 0.0 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-0.975 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.4875" length="0.4953"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="-0.975 0 0" rpy="0 0 0"/>
+            <mass value="112"/>
+            <inertia
+                ixx="1.4" ixy="0.0" ixz="0.0"
+                iyy="1.4" iyz="0.0"
+                izz="0.75"/>
+        </inertial>
+    </link>
+
+    <!-- Joints for the wheels with proper orientation -->
+    <joint name="base_link_to_front_left_wheel" type="continuous">
+        <parent link="base_link"/>
+        <child link="front_left_wheel"/>
+        <!-- Adjusted position based on new dimensions -->
+        <origin xyz="1.11875 0.45085 -0.575" rpy="0 1.5708 1.5708"/>  <!-- Moved further forward -->
+        <axis xyz="0 1 0"/>
+        <preserveFixedJoint>true</preserveFixedJoint> 
+    </joint>
+
+    <joint name="base_link_to_front_right_wheel" type="continuous">
+        <parent link="base_link"/>
+        <child link="front_right_wheel"/>
+        <!-- Adjusted position based on new dimensions -->
+        <origin xyz="1.11875 -0.45085 -0.575" rpy="0 1.5708 1.5708"/>  <!-- Moved further forward -->
+        <axis xyz="0 1 0"/>
+        <preserveFixedJoint>true</preserveFixedJoint>  
+    </joint>
+
+    <joint name="base_link_to_rear_left_wheel" type="continuous">
+        <parent link="base_link"/>
+        <child link="rear_left_wheel"/>
+        <!-- Adjusted position for rear left wheel -->
+        <origin xyz="-0.9725 0.45085 -0.47" rpy="0 1.5708 1.5708"/>  <!-- Moved further back -->
+        <axis xyz="0 1 0"/> 
+        <preserveFixedJoint>true</preserveFixedJoint> 
+    </joint>
+
+    <joint name="base_link_to_rear_right_wheel" type="continuous">
+        <parent link="base_link"/>
+        <child link="rear_right_wheel"/>
+        <!-- Adjusted position for rear right wheel -->
+        <origin xyz="-0.9725 -0.45085 -0.47" rpy="0 1.5708 1.5708"/>  <!-- Moved further back -->
+        <axis xyz="0 1 0"/>
+        <preserveFixedJoint>true</preserveFixedJoint>  
+    </joint>
+
+    <link name="frame">
+        <visual>
+        	<origin xyz="0 0 0.9875" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.93 0.05 1.05"/>
+            </geometry>
+            <material name="gray">
+                <color rgba="0.5 0.5 0.5 1.0"/>  <!-- Gray frame -->
+            </material>
+        </visual>
+        <collision>
+        	<origin xyz="0 0 0.9875" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.93 0.05 1.05"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <origin xyz="0 0 0.9875" rpy="0 0 0"/>
+            <mass value="50"/>
+            <inertia
+                ixx="1.25" ixy="0.0" ixz="0.0"
+                iyy="3.55" iyz="0.0"
+                izz="3.7"/>
+        </inertial>
+    </link>
+
+
+
+    <!-- Joint for the frame positioned correctly at the rear of the base link -->
+    <joint name="base_link_to_frame" type="fixed">
+        <parent link="base_link"/>
+        <child link="frame"/>
+        <origin xyz="-1.147 0 0.8738" rpy="0 0 1.5708"/>  <!-- Adjusted based on new dimensions -->
+        <preserveFixedJoint>true</preserveFixedJoint> 
+    </joint>
+
+    <!-- OAK-D Camera Link -->
+    <link name="oak_d_camera">
+        <visual>
+            <geometry>
+                <box size="0.111 0.04 0.0313"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0.1 0.1 0.1 1.0"/>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.111 0.04 0.0313"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.25"/>
+            <inertia>
+                <ixx>0.0001</ixx>
+                <iyy>0.0001</iyy>
+                <izz>0.0001</izz>
+                <ixy>0.0</ixy>
+                <ixz>0.0</ixz>
+                <iyz>0.0</iyz>
+            </inertia>
+        </inertial>
+    </link>
+
+    <!-- Joint to attach the OAK-D camera to the frame -->
+    <joint name="frame_to_oak_d_camera" type="fixed">
+        <parent link="frame"/>
+        <child link="oak_d_camera"/>
+        <origin xyz="0 -0.0152 0.5475"/>
+        <axis xyz="1 0 0"/>  <!-- Rotates around the X-axis for pitch adjustment -->
+        <limit lower="0.0" upper="1.5708" effort="10" velocity="1.0"/>  <!-- Default: 0 to 90 degrees -->
+        <preserveFixedJoint>true</preserveFixedJoint>   
+    </joint>
+    <!-- Link for the GPS -->
+    <link name="gps">
+        <!-- Visual Element for GPS -->
+        <visual>
+            <origin xyz="0 0 0.9875" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.076" length="0.0622"/>
+            </geometry>
+            <material name="white">
+                <color rgba="1.0 1.0 1.0 1.0"/> <!-- White color -->
+            </material>
+        </visual>
+
+        <!-- Collision Element for GPS -->
+        <collision>
+            <origin xyz="0 0 0.9875" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.076" length="0.0622"/>
+            </geometry>
+        </collision>
+
+        <!-- Inertial Element for GPS -->
+        <inertial>
+            <origin xyz="0 0 0.9875" rpy="0 0 0"/>
+            <mass value="0.1"/>
+            <inertia
+                ixx="0.00018" ixy="0.0" ixz="0.0"
+                iyy="0.00018" iyz="0.0"
+                izz="0.00029"/>
+        </inertial>
+    </link>
+
+    <!-- Joint to attach GPS to the frame -->
+    <joint name="gps_joint" type="fixed">
+        <parent link="frame"/> <!-- Replace with your parent link name -->
+        <child link="gps"/>
+        <origin xyz="0 0 0.6172" rpy="0 0 0"/> <!-- Adjust the position (0.3m above the frame) -->
+        <preserveFixedJoint>true</preserveFixedJoint> 
+    </joint>
+
+    
+    <link name="lidar">
+        <!-- Visual Element for Top Cylinder -->
+        <visual>
+            <geometry>
+                <cylinder radius="0.04111" length="0.02172"/>
+            </geometry>
+            <material name="gray">
+                <color rgba="0.0 0.0 1.0 1.0"/>  <!-- Gray top part -->
+            </material>
+            <origin xyz="0 0 0.01086" rpy="0 0 0"/>  <!-- Positioned on top of the base part -->
+        </visual>
+
+        <!-- Visual Element for Base Cylinder -->
+        <visual>
+            <geometry>
+                <cylinder radius="0.03692" length="0.03029"/>
+            </geometry>
+            <material name="blue">
+                <color rgba="0.5 0.5 0.5 1.0"/>  <!-- Blue base -->
+            </material>
+            <origin xyz="0 0 0.036865" rpy="0 0 0"/>
+        </visual>
+
+        <!-- Collision Element (Simplified Combined Cylinder Geometry) -->
+        <collision>
+            <geometry>
+                <cylinder radius="0.039" length="0.026"/>
+            </geometry>
+        </collision>
+
+        <!-- Inertial Element -->
+        <inertial>
+            <mass value="0.495"/>
+            <inertia>
+                <ixx>0.00022</ixx>
+                <iyy>0.00022</iyy>
+                <izz>0.00038</izz>
+                <ixy>0.0</ixy>
+                <ixz>0.0</ixz>
+                <iyz>0.0</iyz>
+            </inertia>
+        </inertial>
+    </link>
+    
+    <!-- Joint to attach the LiDAR to the bottom bar -->
+    <joint name="sensor_holder_to_lidar" type="fixed">
+        <parent link="sensor_holder"/>  <!-- LiDAR attached to the first sensor holder -->
+        <child link="lidar"/>
+        <!-- Adjust origin to ensure the LiDAR is perfectly centered and aligned -->
+        <origin xyz="0 0 -0.0135" rpy="3.14159 0 0"/> <!-- 180-degree flip around X-axis -->
+        <preserveFixedJoint>true</preserveFixedJoint> 
+    </joint>
+
+	    
+	<gazebo>
+		<plugin name="gps_plugin" filename="libgazebo_ros_gps.so">
+		    <ros>
+		        <namespace>/small_tractor</namespace> <!-- Namespace for the robot -->
+		    </ros>
+		    <sensor_name>gps</sensor_name>  <!-- Name of the GPS sensor -->
+		    <topic>/gps</topic>  <!-- Topic to publish GPS data -->
+		    <frame_id>base_link</frame_id>  <!-- The frame that the GPS sensor uses -->
+		    <referenceLatitude>$(optenv GAZEBO_WORLD_LAT 49.9)</referenceLatitude>
+            <referenceLongitude>$(optenv GAZEBO_WORLD_LON 8.9)</referenceLongitude>
+            <referenceHeading>90</referenceHeading>
+            <referenceAltitude>0</referenceAltitude>
+            <drift>0.0001 0.0001 0.0001</drift>
+		    <update_rate>10.0</update_rate> <!-- GPS data update rate in Hz -->
+		</plugin>
+	</gazebo>
+
+</robot>
+

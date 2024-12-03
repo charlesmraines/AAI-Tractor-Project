@@ -1,0 +1,6 @@
+source;share/tractor_description/hook/pythonpath.ps1
+source;share/tractor_description/hook/pythonpath.dsv
+source;share/tractor_description/hook/pythonpath.sh
+source;share/tractor_description/hook/ament_prefix_path.ps1
+source;share/tractor_description/hook/ament_prefix_path.dsv
+source;share/tractor_description/hook/ament_prefix_path.sh

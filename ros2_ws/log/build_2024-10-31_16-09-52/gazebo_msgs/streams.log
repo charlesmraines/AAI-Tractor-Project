@@ -1,0 +1,33 @@
+[0.044s] Invoking command in '/home/andresarias23gmailcom/ros2_ws/build/gazebo_msgs': /usr/bin/cmake /home/andresarias23gmailcom/ros2_ws/src/gazebo_ros_pkgs/gazebo_msgs -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/andresarias23gmailcom/ros2_ws/install/gazebo_msgs
+[0.623s] -- The C compiler identification is GNU 11.4.0
+[0.863s] -- The CXX compiler identification is GNU 11.4.0
+[0.886s] -- Detecting C compiler ABI info
+[1.143s] -- Detecting C compiler ABI info - done
+[1.161s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.162s] -- Detecting C compile features
+[1.162s] -- Detecting C compile features - done
+[1.173s] -- Detecting CXX compiler ABI info
+[1.442s] -- Detecting CXX compiler ABI info - done
+[1.454s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.455s] -- Detecting CXX compile features
+[1.456s] -- Detecting CXX compile features - done
+[1.481s] [31mCMake Error at CMakeLists.txt:4 (find_package):
+[1.482s]   By not providing "Findcatkin.cmake" in CMAKE_MODULE_PATH this project has
+[1.482s]   asked CMake to find a package configuration file provided by "catkin", but
+[1.482s]   CMake did not find one.
+[1.482s] 
+[1.482s]   Could not find a package configuration file provided by "catkin" with any
+[1.482s]   of the following names:
+[1.482s] 
+[1.482s]     catkinConfig.cmake
+[1.482s]     catkin-config.cmake
+[1.483s] 
+[1.483s]   Add the installation prefix of "catkin" to CMAKE_PREFIX_PATH or set
+[1.483s]   "catkin_DIR" to a directory containing one of the above files.  If "catkin"
+[1.483s]   provides a separate development package or SDK, be sure it has been
+[1.483s]   installed.
+[1.483s] 
+[1.483s] [0m
+[1.483s] -- Configuring incomplete, errors occurred!
+[1.483s] See also "/home/andresarias23gmailcom/ros2_ws/build/gazebo_msgs/CMakeFiles/CMakeOutput.log".
+[1.490s] Invoked command in '/home/andresarias23gmailcom/ros2_ws/build/gazebo_msgs' returned '1': /usr/bin/cmake /home/andresarias23gmailcom/ros2_ws/src/gazebo_ros_pkgs/gazebo_msgs -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCMAKE_INSTALL_PREFIX=/home/andresarias23gmailcom/ros2_ws/install/gazebo_msgs
