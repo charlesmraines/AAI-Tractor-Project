@@ -1,0 +1,104 @@
+[0.000000] (-) TimerEvent: {}
+[0.002578] (gazebo_dev) JobQueued: {'identifier': 'gazebo_dev', 'dependencies': OrderedDict()}
+[0.002976] (gazebo_msgs) JobQueued: {'identifier': 'gazebo_msgs', 'dependencies': OrderedDict()}
+[0.003072] (tractor_description) JobQueued: {'identifier': 'tractor_description', 'dependencies': OrderedDict()}
+[0.003122] (gazebo_ros) JobQueued: {'identifier': 'gazebo_ros', 'dependencies': OrderedDict([('gazebo_dev', '/home/andresarias23gmailcom/ros2_ws/install/gazebo_dev'), ('gazebo_msgs', '/home/andresarias23gmailcom/ros2_ws/install/gazebo_msgs')])}
+[0.003176] (gazebo_plugins) JobQueued: {'identifier': 'gazebo_plugins', 'dependencies': OrderedDict([('gazebo_dev', '/home/andresarias23gmailcom/ros2_ws/install/gazebo_dev'), ('gazebo_msgs', '/home/andresarias23gmailcom/ros2_ws/install/gazebo_msgs'), ('gazebo_ros', '/home/andresarias23gmailcom/ros2_ws/install/gazebo_ros')])}
+[0.003729] (gazebo_ros_control) JobQueued: {'identifier': 'gazebo_ros_control', 'dependencies': OrderedDict([('gazebo_dev', '/home/andresarias23gmailcom/ros2_ws/install/gazebo_dev'), ('gazebo_msgs', '/home/andresarias23gmailcom/ros2_ws/install/gazebo_msgs'), ('gazebo_ros', '/home/andresarias23gmailcom/ros2_ws/install/gazebo_ros')])}
+[0.004755] (gazebo_ros_pkgs) JobQueued: {'identifier': 'gazebo_ros_pkgs', 'dependencies': OrderedDict([('gazebo_dev', '/home/andresarias23gmailcom/ros2_ws/install/gazebo_dev'), ('gazebo_msgs', '/home/andresarias23gmailcom/ros2_ws/install/gazebo_msgs'), ('gazebo_ros', '/home/andresarias23gmailcom/ros2_ws/install/gazebo_ros'), ('gazebo_plugins', '/home/andresarias23gmailcom/ros2_ws/install/gazebo_plugins')])}
+[0.004874] (gazebo_dev) JobStarted: {'identifier': 'gazebo_dev'}
+[0.015372] (gazebo_msgs) JobStarted: {'identifier': 'gazebo_msgs'}
+[0.026490] (tractor_description) JobStarted: {'identifier': 'tractor_description'}
+[0.041951] (gazebo_dev) JobProgress: {'identifier': 'gazebo_dev', 'progress': 'cmake'}
+[0.042563] (gazebo_dev) Command: {'cmd': ['/usr/bin/cmake', '/home/andresarias23gmailcom/ros2_ws/src/gazebo_ros_pkgs/gazebo_dev', '-DCATKIN_INSTALL_INTO_PREFIX_ROOT=0', '-DCMAKE_INSTALL_PREFIX=/home/andresarias23gmailcom/ros2_ws/install/gazebo_dev'], 'cwd': '/home/andresarias23gmailcom/ros2_ws/build/gazebo_dev', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'andresarias23gmailcom'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/andresarias23gmailcom'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '3019'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'andresarias23gmailcom'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'andresarias23gmailcom'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/andresarias23gmailcom/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/tractorclass:@/tmp/.ICE-unix/2208,unix/tractorclass:/tmp/.ICE-unix/2208'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/60052f2f_5382_4aba_9728_6a1d20092547'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.98'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/andresarias23gmailcom/ros2_ws/build/gazebo_dev'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/home/andresarias23gmailcom/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800')]), 'shell': False}
+[0.054344] (gazebo_msgs) JobProgress: {'identifier': 'gazebo_msgs', 'progress': 'cmake'}
+[0.055115] (gazebo_msgs) Command: {'cmd': ['/usr/bin/cmake', '/home/andresarias23gmailcom/ros2_ws/src/gazebo_ros_pkgs/gazebo_msgs', '-DCATKIN_INSTALL_INTO_PREFIX_ROOT=0', '-DCMAKE_INSTALL_PREFIX=/home/andresarias23gmailcom/ros2_ws/install/gazebo_msgs'], 'cwd': '/home/andresarias23gmailcom/ros2_ws/build/gazebo_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'andresarias23gmailcom'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/andresarias23gmailcom'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '3019'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'andresarias23gmailcom'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'andresarias23gmailcom'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/andresarias23gmailcom/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/tractorclass:@/tmp/.ICE-unix/2208,unix/tractorclass:/tmp/.ICE-unix/2208'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/60052f2f_5382_4aba_9728_6a1d20092547'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.98'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/andresarias23gmailcom/ros2_ws/build/gazebo_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/home/andresarias23gmailcom/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800')]), 'shell': False}
+[0.099749] (-) TimerEvent: {}
+[0.200585] (-) TimerEvent: {}
+[0.301430] (-) TimerEvent: {}
+[0.403289] (-) TimerEvent: {}
+[0.504879] (-) TimerEvent: {}
+[0.608781] (-) TimerEvent: {}
+[0.638340] (gazebo_msgs) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.638903] (gazebo_dev) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.708980] (-) TimerEvent: {}
+[0.809718] (-) TimerEvent: {}
+[0.878285] (gazebo_msgs) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.880808] (gazebo_dev) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.901260] (gazebo_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.901970] (gazebo_dev) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.909881] (-) TimerEvent: {}
+[1.010505] (-) TimerEvent: {}
+[1.111163] (-) TimerEvent: {}
+[1.152458] (gazebo_dev) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[1.157959] (gazebo_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[1.168295] (gazebo_dev) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[1.169726] (gazebo_dev) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[1.170741] (gazebo_dev) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[1.176553] (gazebo_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[1.177135] (gazebo_msgs) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[1.177773] (gazebo_dev) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.178036] (gazebo_msgs) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[1.188810] (gazebo_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.211318] (-) TimerEvent: {}
+[1.311947] (-) TimerEvent: {}
+[1.412616] (-) TimerEvent: {}
+[1.457629] (gazebo_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.465954] (gazebo_dev) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.469610] (gazebo_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[1.470145] (gazebo_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.471209] (gazebo_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.486142] (gazebo_dev) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[1.486797] (gazebo_dev) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.489516] (gazebo_dev) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.495174] (gazebo_msgs) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:4 (find_package):\n'}
+[1.497102] (gazebo_msgs) StderrLine: {'line': b'  By not providing "Findcatkin.cmake" in CMAKE_MODULE_PATH this project has\n'}
+[1.497258] (gazebo_msgs) StderrLine: {'line': b'  asked CMake to find a package configuration file provided by "catkin", but\n'}
+[1.497400] (gazebo_msgs) StderrLine: {'line': b'  CMake did not find one.\n'}
+[1.497520] (gazebo_msgs) StderrLine: {'line': b'\n'}
+[1.497633] (gazebo_msgs) StderrLine: {'line': b'  Could not find a package configuration file provided by "catkin" with any\n'}
+[1.497743] (gazebo_msgs) StderrLine: {'line': b'  of the following names:\n'}
+[1.497852] (gazebo_msgs) StderrLine: {'line': b'\n'}
+[1.497975] (gazebo_msgs) StderrLine: {'line': b'    catkinConfig.cmake\n'}
+[1.498086] (gazebo_msgs) StderrLine: {'line': b'    catkin-config.cmake\n'}
+[1.498192] (gazebo_msgs) StderrLine: {'line': b'\n'}
+[1.498298] (gazebo_msgs) StderrLine: {'line': b'  Add the installation prefix of "catkin" to CMAKE_PREFIX_PATH or set\n'}
+[1.498404] (gazebo_msgs) StderrLine: {'line': b'  "catkin_DIR" to a directory containing one of the above files.  If "catkin"\n'}
+[1.498511] (gazebo_msgs) StderrLine: {'line': b'  provides a separate development package or SDK, be sure it has been\n'}
+[1.498615] (gazebo_msgs) StderrLine: {'line': b'  installed.\n'}
+[1.498753] (gazebo_msgs) StderrLine: {'line': b'\n'}
+[1.498864] (gazebo_msgs) StderrLine: {'line': b'\x1b[0m\n'}
+[1.498972] (gazebo_msgs) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[1.499105] (gazebo_msgs) StdoutLine: {'line': b'See also "/home/andresarias23gmailcom/ros2_ws/build/gazebo_msgs/CMakeFiles/CMakeOutput.log".\n'}
+[1.504825] (gazebo_msgs) CommandEnded: {'returncode': 1}
+[1.512723] (-) TimerEvent: {}
+[1.515122] (gazebo_dev) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:4 (find_package):\n'}
+[1.515598] (gazebo_dev) StderrLine: {'line': b'  By not providing "Findcatkin.cmake" in CMAKE_MODULE_PATH this project has\n'}
+[1.515865] (gazebo_dev) StderrLine: {'line': b'  asked CMake to find a package configuration file provided by "catkin", but\n'}
+[1.516023] (gazebo_dev) StderrLine: {'line': b'  CMake did not find one.\n'}
+[1.516152] (gazebo_dev) StderrLine: {'line': b'\n'}
+[1.516270] (gazebo_dev) StderrLine: {'line': b'  Could not find a package configuration file provided by "catkin" with any\n'}
+[1.516545] (gazebo_dev) StderrLine: {'line': b'  of the following names:\n'}
+[1.516841] (gazebo_dev) StderrLine: {'line': b'\n'}
+[1.516985] (gazebo_dev) StderrLine: {'line': b'    catkinConfig.cmake\n'}
+[1.517102] (gazebo_dev) StderrLine: {'line': b'    catkin-config.cmake\n'}
+[1.517209] (gazebo_dev) StderrLine: {'line': b'\n'}
+[1.517315] (gazebo_dev) StderrLine: {'line': b'  Add the installation prefix of "catkin" to CMAKE_PREFIX_PATH or set\n'}
+[1.517570] (gazebo_dev) StderrLine: {'line': b'  "catkin_DIR" to a directory containing one of the above files.  If "catkin"\n'}
+[1.517901] (gazebo_dev) StderrLine: {'line': b'  provides a separate development package or SDK, be sure it has been\n'}
+[1.520670] (gazebo_dev) StderrLine: {'line': b'  installed.\n'}
+[1.521023] (gazebo_dev) StderrLine: {'line': b'\n'}
+[1.521174] (gazebo_dev) StderrLine: {'line': b'\x1b[0m\n'}
+[1.521301] (gazebo_dev) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[1.521453] (gazebo_dev) StdoutLine: {'line': b'See also "/home/andresarias23gmailcom/ros2_ws/build/gazebo_dev/CMakeFiles/CMakeOutput.log".\n'}
+[1.525628] (gazebo_dev) CommandEnded: {'returncode': 1}
+[1.549597] (gazebo_msgs) JobEnded: {'identifier': 'gazebo_msgs', 'rc': 1}
+[1.551818] (gazebo_dev) JobEnded: {'identifier': 'gazebo_dev', 'rc': 'SIGINT'}
+[1.612900] (-) TimerEvent: {}
+[1.713518] (-) TimerEvent: {}
+[1.736156] (tractor_description) JobEnded: {'identifier': 'tractor_description', 'rc': 'SIGINT'}
+[1.747671] (gazebo_ros) JobSkipped: {'identifier': 'gazebo_ros'}
+[1.747854] (gazebo_plugins) JobSkipped: {'identifier': 'gazebo_plugins'}
+[1.747910] (gazebo_ros_control) JobSkipped: {'identifier': 'gazebo_ros_control'}
+[1.747957] (gazebo_ros_pkgs) JobSkipped: {'identifier': 'gazebo_ros_pkgs'}
+[1.748001] (-) EventReactorShutdown: {}
