@@ -1,0 +1,22 @@
+[4.867s] Invoking command in '/home/andresarias23gmailcom/ros2_ws/src/tractor_description': PYTHONPATH=/home/andresarias23gmailcom/ros2_ws/build/tractor_description/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/andresarias23gmailcom/ros2_ws/install/tractor_description/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/tractor_description build --build-base /home/andresarias23gmailcom/ros2_ws/build/tractor_description/build install --record /home/andresarias23gmailcom/ros2_ws/build/tractor_description/install.log --single-version-externally-managed install_data
+[5.438s] running egg_info
+[5.439s] writing ../../build/tractor_description/tractor_description.egg-info/PKG-INFO
+[5.601s] writing dependency_links to ../../build/tractor_description/tractor_description.egg-info/dependency_links.txt
+[5.601s] writing entry points to ../../build/tractor_description/tractor_description.egg-info/entry_points.txt
+[5.601s] writing requirements to ../../build/tractor_description/tractor_description.egg-info/requires.txt
+[5.602s] writing top-level names to ../../build/tractor_description/tractor_description.egg-info/top_level.txt
+[5.607s] reading manifest file '../../build/tractor_description/tractor_description.egg-info/SOURCES.txt'
+[5.609s] adding license file 'LICENSE'
+[5.610s] writing manifest file '../../build/tractor_description/tractor_description.egg-info/SOURCES.txt'
+[5.611s] running build
+[5.611s] running build_py
+[5.619s] running install
+[5.620s] running install_lib
+[5.624s] running install_data
+[5.625s] copying urdf/tractor_test.urdf -> /home/andresarias23gmailcom/ros2_ws/install/tractor_description/share/tractor_description/urdf
+[5.625s] running install_egg_info
+[5.630s] removing '/home/andresarias23gmailcom/ros2_ws/install/tractor_description/lib/python3.10/site-packages/tractor_description-0.0.0-py3.10.egg-info' (and everything under it)
+[5.631s] Copying ../../build/tractor_description/tractor_description.egg-info to /home/andresarias23gmailcom/ros2_ws/install/tractor_description/lib/python3.10/site-packages/tractor_description-0.0.0-py3.10.egg-info
+[5.634s] running install_scripts
+[5.684s] writing list of installed files to '/home/andresarias23gmailcom/ros2_ws/build/tractor_description/install.log'
+[5.811s] Invoked command in '/home/andresarias23gmailcom/ros2_ws/src/tractor_description' returned '0': PYTHONPATH=/home/andresarias23gmailcom/ros2_ws/build/tractor_description/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/andresarias23gmailcom/ros2_ws/install/tractor_description/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/tractor_description build --build-base /home/andresarias23gmailcom/ros2_ws/build/tractor_description/build install --record /home/andresarias23gmailcom/ros2_ws/build/tractor_description/install.log --single-version-externally-managed install_data
