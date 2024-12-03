@@ -41,4 +41,3 @@ sudo apt install ros-$ROS_DISTRO-cv-bridge ros-$ROS_DISTRO-image-transport
 ```
 
 Replace `$ROS_DISTRO` with your ROS 2 distribution (e.g., `humble`).
-```
