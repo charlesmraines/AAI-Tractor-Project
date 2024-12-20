@@ -68,7 +68,7 @@ class SimpleController(Node):
     def imu_callback(self, msg):
         try:
             self.current_heading = float(msg.data)
-            self.get_logger().info(f"IMU heading: {self.current_heading} degrees")
+            #self.get_logger().info(f"IMU heading: {self.current_heading} degrees")
         except ValueError:
             self.get_logger().error(f"Invalid IMU heading received: {msg.data}")
 
@@ -76,6 +76,7 @@ class SimpleController(Node):
         if self.current_pos is not None:
             x = self.current_pos[0]
             y = self.current_pos[1]
+            print(f"x: {x}   y: {y}")
             current_time = time.time() - start_time
 
             # Log the data
