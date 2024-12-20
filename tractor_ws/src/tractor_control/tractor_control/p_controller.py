@@ -5,6 +5,15 @@ from std_msgs.msg import String
 from geometry_msgs.msg import Twist
 import math
 import numpy as np
+import pandas as pd
+import time
+
+# Create a DataFrame to store the log of location and heading (for visualization)
+log_data = {"time": [], "x": [], "y": [], "heading": []}
+df = pd.DataFrame(log_data)
+
+log_x, log_y, log_heading = 0.0, 0.0, 0
+start_time = time.time()
 
 def lla_to_ecef(lat, lon, alt):
     # WGS84 constants
@@ -67,6 +76,11 @@ class SimpleController(Node):
         if self.current_pos is not None:
             x = self.current_pos[0]
             y = self.current_pos[1]
+            current_time = time.time() - start_time
+
+            # Log the data
+            log_data = {"time": [current_time], "x": [x], "y": [y], "heading": [self.current_heading]}
+            df = pd.concat([df, pd.DataFrame(log_data)], ignore_index=True)
 
             # Calculate distance to goal
             delta_pos = math.sqrt((self.goal[0] - x)**2 + (self.goal[1] - y)**2)
@@ -118,6 +132,8 @@ def main(args=None):
     controller = SimpleController()
 
     rclpy.spin(controller)
+    df.to_csv("tractor_data_log.csv", index=False)
+    print("Data saved to tractor_data_log.csv")
     controller.destroy_node()
     rclpy.shutdown()
 
